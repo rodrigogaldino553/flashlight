@@ -7,14 +7,17 @@ import { Flashlight } from '@ionic-native/flashlight/ngx';
 })
 export class HomePage {
   isTorch = false;
-  
+  btn = 'turn on';
+
   constructor(private flashlight: Flashlight) {}
   
   toggleLights(){
     if(this.isTorch){
       this.onFlashlight()
+      this.btn = 'turn off';
     }else{
       this.offFlashlight()
+      this.btn = 'turn on';
     }
   }
   
@@ -23,6 +26,7 @@ export class HomePage {
       this.isTorch = false;
       this.flashlight.switchOn();
     }else{
+      this.btn = 'X'
       alert("Flashlight Not Available");
     }
   }
