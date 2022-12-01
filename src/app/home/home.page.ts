@@ -12,10 +12,12 @@ export class HomePage {
   constructor(private flashlight: Flashlight) {}
   
   toggleLights(){
-    if(this.isTorch){
+    if(!this.isTorch){
+      console.log('aaaa')
       this.onFlashlight()
       this.btn = 'turn off';
     }else{
+      console.log('eee')
       this.offFlashlight()
       this.btn = 'turn on';
     }
@@ -23,7 +25,7 @@ export class HomePage {
   
   async onFlashlight(){
     if(await this.flashlight.available()){
-      this.isTorch = false;
+      this.isTorch = true;
       this.flashlight.switchOn();
     }else{
       this.btn = 'X'
@@ -31,7 +33,7 @@ export class HomePage {
     }
   }
   offFlashlight(){
-    this.isTorch = true;
+    this.isTorch = false;
     this.flashlight.switchOff();
   }
 }
